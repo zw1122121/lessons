@@ -1,0 +1,7 @@
+#bower下载的组件
+bower_components
+#npm下载的组件
+node_modules
+.idea
+.svn
+

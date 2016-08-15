@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angularjs的isolateScope</title>
+    <script src="bower_components/angular/angular.js"></script>
+
+</head>
+<body ng-controller="parentScopeCtrl">
+<button ng-click="changeNameTo('李四')">changeName</button>
+<shared-scope></shared-scope>
+<hr/>
+<shared-scope></shared-scope>
+<hr/>
+<isolate-scope></isolate-scope>
+<hr/>
+<improve-isolate-scope name="{{customer.name}}" customer="customer" newName="张珊"
+                       on-change-name="changeNameTo(newName)"></improve-isolate-scope>
+</body>
+<script>
+    angular.module('myApp',[])
+            .directive("sharedScope",function ($log) {  //没有scope的指令，依赖于parentScope，如果parentScope中没有
+                //customer.name和customer.street，指令模板就不再有效。
+
+                return {
+                    template: 'Name: {{customer.name}} Street: {{customer.street}}'
+                };
+            })
+            .directive("isolateScope",function () { //隔离的域并不继承parentScope,所以访问不到parentScope的值
+              return {
+                  scope : {},
+                  template :  'Name: {{customer.name}} Street: {{customer.street}}'
+              }
+            })
+            .directive("improveIsolateScope",function () {
+                return {
+                    scope : {
+                        // @ = & 三种绑定
+                        name : "@", //@用于绑定parentScope的字符串，当parentScope的值更新时，isolateScope绑定的值也更新，
+                                    //但是在isolateScope更新时，parentScope的值不更新
+                        customer : "=",  //区别于@， =是用于绑定对象的，绑定的对象是双向绑定。
+                        onChangeName : "&",
+                        newName : "@"
+                    },
+                    template :  '<input ng-model="name"> <input ng-model="customer.name"> <button ng-click="onChangeName()">改变名称</button>'
+                }
+            })
+            .controller("parentScopeCtrl",function ($scope, $log) {
+                $scope.customer = {
+                    name : "张三",
+                    street : "金阳",
+                    newName : "张珊"
+                };
+                $scope.changeNameTo = function (newName) {
+                    $log.info(newName);
+                    $scope.customer.name = newName;
+                }
+    });
+</script>
+</html>

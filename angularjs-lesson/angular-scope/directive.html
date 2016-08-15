@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular directive lesson</title>
+    <script src="bower_components/angular/angular.js"></script>
+
+</head>
+<body>
+<factory-function></factory-function>
+<factory-function></factory-function>
+<factory-function></factory-function>
+</body>
+<script>
+    angular.module('myApp',[])
+            .directive("factoryFunction", function ($log) { //工厂方法只在第一次匹配时调用一次,可以在这里执行任何初始化操作。
+                var count = 1;
+                $log.info("第" + count + "次调用sharedScope的工厂函数");
+                return {
+                    link : function () {
+                        $log.info("第" + count +"次调用link方法");
+                        count++;
+                    }
+                };
+            });
+</script>
+</html>

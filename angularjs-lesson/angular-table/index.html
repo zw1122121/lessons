@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angular table</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-table/dist/bootstrap-table.css"/>
+</head>
+<body ng-controller="bodyController">
+
+<device-list on-select="setDevice(device)"></device-list>
+
+
+<script src="bower_components/jquery-v2.1/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="bower_components/bootstrap-table/dist/bootstrap-table.js"></script>
+<script src="bower_components/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+<!--angularjs项目依赖-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+<script src="bower_components/bootstrap-table/dist/extensions/angular/bootstrap-table-angular.js"></script>
+
+<!--自定义component-->
+<script src="index.js"></script>
+<script src="myComponents/deviceList/deviceListComponent.js"></script>
+</body>
+</html>

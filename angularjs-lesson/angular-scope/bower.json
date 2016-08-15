@@ -1,0 +1,28 @@
+{
+  "name": "angular-scope",
+  "homepage": "https://github.com/zw1122121/lessons",
+  "authors": [
+    "zw <zwnibudongai@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery-v2.1": "jquery#2.1",
+    "angular": "angularjs#^1.5.8",
+    "font-awesome": "fontawesome#^4.6.3",
+    "angular-ui-router": "^0.3.1",
+    "angular-bootstrap": "^2.0.1",
+    "angular-smart-table": "^2.1.8",
+    "bootstrap-table": "^1.11.0",
+    "angular-animate": "^1.5.8"
+  }
+}
